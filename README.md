@@ -1,0 +1,1 @@
+This is the readme file for Typesetting, a theme for Obsidian MD.
