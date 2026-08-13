@@ -248,10 +248,12 @@ body {
 	--code-button-line-height: 1.5;
 	--code-button-radius: var(--radius-s);
 	--code-button-spacing: var(--spacing-m);
-	--code-line-height: round(to-zero, 1.2rem, 1px);
+	--code-line-height: round(to-zero, 1.1rem, 1px);
 	--code-margin: var(--p-spacing) 0;
 	--code-padding: var(--spacing-l) var(--spacing-xl);
-	--code-padding-inline: var(--spacing-s) var(--spacing-m);
+	--code-inline-padding-block: round(to-zero, 0.05rem, 1px);
+	--code-inline-padding-inline: var(--spacing-m);
+	--code-font-size-inline: round(to-zero, 0.8rem, 1px);
 
 	/* -- Unused variables --//
 	--code-white-space: pre-wrap;
@@ -856,11 +858,33 @@ body {
 .cm-s-obsidian .cm-inline-code,
 .cm-s-obsidian .cm-inline-code:not(.cm-formatting), 
 .markdown-rendered code {
-	padding: var(--code-padding-inline);
+	font-size: var(--code-font-size-inline);
 	line-height: var(--code-line-height);
+	padding-block: var(--code-inline-padding-block);
+	padding-inline: var(--code-inline-padding-inline);
 }
 .cm-s-obsidian .cm-inline-code.cm-formatting ~ .cm-inline-code:not(.cm-formatting) {
-	padding: round(to-zero, 0.15rem, 1px) 0;
+	/* Overwriting Obsidian's questionable selector */
+	border-radius: var(--code-radius);
+	padding-block: var(--code-inline-padding-block);
+	padding-inline: var(--code-inline-padding-inline);
+}
+.cm-s-obsidian .cm-inline-code.cm-formatting + .cm-inline-code:not(.cm-formatting) {
+	border-radius: 0;
+	padding-inline: 0;
+}
+.cm-s-obsidian .cm-formatting.cm-formatting-code.cm-inline-code {
+	font-size: var(--code-font-size-inline);
+	padding: 0;
+	padding-block: var(--code-inline-padding-block);
+}
+.cm-s-obsidian .cm-formatting.cm-formatting-code.cm-inline-code:has(+ .cm-inline-code:not(.cm-formatting)) {
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+.cm-s-obsidian .cm-formatting.cm-formatting-code.cm-inline-code + .cm-inline-code:not(.cm-formatting) {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 }
 
 /* --------------------------------------------------------
