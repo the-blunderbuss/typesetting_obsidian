@@ -1430,8 +1430,10 @@ a.tag {
 -------------------------------------------------------- */
 /* -- Reading view -- */
 .markdown-rendered mark {
-	border-radius: var(--radius-s);
-	display: inline-block;
+	background: linear-gradient(var(--text-highlight-bg), var(--text-highlight-bg)) no-repeat;
+	background-color: transparent;
+	background-position-y: round(to-zero, 0.125em, 1px);
+	background-size: 100% var(--line-height-normal);
 	padding-inline: var(--spacing-xs);
 }
 /* -- Editing view -- */
