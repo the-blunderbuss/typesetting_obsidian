@@ -1462,7 +1462,9 @@ a.tag {
    TEXT: SELECTION
 -------------------------------------------------------- */
 /* -- Reading view -- */
-/* ::selection {} */
+mark::selection {
+	background-color: var(--color-text-selection-highlight);
+}
 /* -- Editing view -- */
 .markdown-source-view.mod-cm6 .cm-highlight::selection {
 	background-color: var(--color-text-selection-highlight);
