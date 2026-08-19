@@ -224,6 +224,7 @@ body {
 	-------------------------------------------------------- */
 	/* -- Obsidian variables -- */
 	--checkbox-margin-inline-start: 0;
+  	--checkbox-border-color-hover: var(--text-faint);
 	--checkbox-radius: var(--radius-s);
 	--checkbox-size: round(to-zero,calc(1.1 * var(--font-text-size)), 1px);
 	--checklist-done-color: var(--text-faint);
@@ -234,7 +235,6 @@ body {
 	--checkbox-color: var(--interactive-accent);
 	--checkbox-color-hover: var(--interactive-accent-hover);
 	--checkbox-border-color: var(--text-faint);
-	--checkbox-border-color-hover: var(--text-muted);
 	--checkbox-margin-inline-start: 0.85em;
 	*/
 
@@ -419,7 +419,7 @@ body {
 	/* --------------------------------------------------------
 	   HORIZONTAL RULES
 	-------------------------------------------------------- */
-	--hr-color: var(--background-modifier-border);
+	--hr-color: var(--color-decorations-line);
 	--hr-thickness: 1px;
 
 	/* Icons */
@@ -440,7 +440,6 @@ body {
 	-------------------------------------------------------- */
 	/* -- Obsidian variables -- */
 	--indentation-guide-editing-indent: round(to-zero, 0.35rem, 1px);
-	/* --indentation-guide-editing-indent: round(to-zero, 0.85rem, 1px); */
 
 	/* -- Theme variables -- */
 	--indentation-guide-editing-ul: round(to-zero, 0.35rem, 1px);
@@ -1229,7 +1228,7 @@ input[type="radio"], input[type=checkbox] {
 	cursor: pointer;
 }
 input[type=checkbox]:checked.task-list-item-checkbox {
-	box-shadow: inset 0px 0px 0px 1px var(--checkbox-color);
+	box-shadow: inset 0px 0px 0px 1px var(--checkbox-border);
 }
 input[type="radio"]:checked:after, input[type=checkbox]:checked:after {
 	top: 0;
@@ -1487,7 +1486,7 @@ del {
 -------------------------------------------------------- */
 :root {
 	/* Flexoki Theme - by Steph Ango @ https://stephango.com/flexoki  */
-	--black: rgb(16, 15, 15);
+	--black: rgb(16, 15, 15); /* #100F0F */
 	--base-950: rgb(28, 27, 26);
 	--base-900: rgb(40, 39, 38);
 	--base-850: rgb(52, 51, 49);
@@ -1500,7 +1499,7 @@ del {
 	--base-150: rgb(218, 216, 206);
 	--base-100: rgb(230, 228, 217);
 	--base-50: rgb(242, 240, 229);
-	--paper: rgb(255, 252, 240);
+	--paper: rgb(255, 252, 240); /* #FFFCF0 */
 
 	--red-400: rgb(209, 77, 65); /* #D14D41 */
 	--red-600: rgb(175, 48, 41); /* #AF3029 */
@@ -1519,10 +1518,14 @@ del {
 	--orange-900: rgb(64, 32, 13); /* #40200D */
 	--orange-950: rgb(39, 24, 14); /* #27180E */
 	
+	--yellow-50: rgb(250, 238, 198); /* #FAEEC6 */
 	--yellow-100: rgb(246, 226, 160); /* #F6E2A0 */
+	--yellow-150: rgb(241, 214, 126); /* #F1D67E */
 	--yellow-200: rgb(236, 203, 96); /* #ECCB60 */
+	--yellow-300: rgb(223, 180, 49); /* #DFB431 */
 	--yellow-400: rgb(208, 162, 21); /* #D0A215 */
 	--yellow-600: rgb(173, 131, 1); /* #AD8301 */
+
 	--green-400: rgb(135, 154, 57); /* #879A39 */
 	--green-600: rgb(102, 128, 11); /* #66800B */
 	--cyan-400: rgb(58, 169, 159); /* #3AA99F */
@@ -1545,12 +1548,14 @@ del {
   /* -- Theme variables -- */
   --color-background-01: var(--paper);
   --color-background-02: var(--base-50);
+  --color-checkbox-border: var(--yellow-300);
+  --color-checkbox-border-hover: var(--yellow-400);
   --color-headings: var(--orange-900);
   --color-text-01: var(--black);
   --color-text-02: var(--base-600);
   --color-text-03: var(--base-300);
   --color-highlight: var(--yellow-100);
-  --color-decorations-line: var(--orange-200);
+  --color-decorations-line: var(--yellow-150);
   --color-text-selection-highlight: var(--yellow-200);
 
   --color-red-rgb: 175, 48, 41;
@@ -1572,10 +1577,10 @@ del {
   --color-pink: var(--magenta-600);
 
   /* Accent colour uses --orange-700 as base */
-  --color-accent: var(--orange-700);
+  --color-accent: var(--orange-600);
   --accent-h: 22; 
-  --accent-s: 81%;
-  --accent-l: 34%;
+  --accent-s: 80%;
+  --accent-l: 41%;
 
   --color-base-00: var(--paper);
   --color-base-05: var(--paper);
