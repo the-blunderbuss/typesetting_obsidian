@@ -229,6 +229,8 @@ body {
 	--checkbox-size: round(to-zero,calc(1.1 * var(--font-text-size)), 1px);
 	--checklist-done-color: var(--text-faint);
 	--checklist-done-decoration: none;
+	/* -- Theme variables -- */
+	--checkbox-end-spacing: round(to-zero, calc(var(--checkbox-size) * 0.55), 1px);
 
 	/* -- Unused variables --//
 	--checkbox-marker-color: var(--background-primary);
@@ -1243,18 +1245,35 @@ input[type=checkbox]:hover, input[type=checkbox]:active {
 	--collapse-indicator-indent: round(to-zero, -1rem, 1px);
 	--list-indent-base: 0px;
 	margin-inline-start: var(--list-indent-base);
+	padding-inline-start: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
+	position: relative;
+}
+.markdown-rendered .task-list-item {
+	min-height: calc(var(--line-height-normal) + var(--list-padding-top));
+}
+.markdown-rendered .task-list-item :is(ol,ul) {
+	--parent-padding-inline-start: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
+	position: relative;
+	left: calc(-1 * var(--parent-padding-inline-start));
+}
+.markdown-rendered ul.contains-task-list > .task-list-item > .list-collapse-indicator {
+	padding-inline-end: 0;
+	position: absolute;
+	left: 0;
+}
+.markdown-rendered .task-list-item .task-list-item-checkbox {
+	position: absolute;
+	left: 0;
+	top: var(--list-padding-top);
+}
+.markdown-rendered :not(li) > .contains-task-list > .task-list-item:first-child > .task-list-item-checkbox {
+	top: 0;
 }
 .markdown-rendered ul.contains-task-list > li > ul.contains-task-list > li {
 	--list-indent-base: round(to-zero, 2rem, 1px);
 }
 .markdown-rendered :is(ol, ul):not(.contains-task-list) > li > ul.contains-task-list > li {
 	--list-indent-base: round(to-zero, 0.8rem, 1px);
-}
-.markdown-rendered ul.contains-task-list > li > .list-collapse-indicator {
-	padding-inline-end: 0.5rem;
-	position: relative;
-	top: round(to-zero, -0.05rem, 1px);
-	left: 0;
 }
 ul > li.task-list-item > p > .task-list-item-checkbox, 
 ul > li.task-list-item > .task-list-item-checkbox {
@@ -1263,9 +1282,6 @@ ul > li.task-list-item > .task-list-item-checkbox {
 	margin-inline-start: var(--left-offset);
 	margin-inline-start: 0;
 	margin-inline-end: var(--distance-to-text);
-}
-.markdown-preview-view .task-list-item-checkbox {
-	top: round(to-zero, 0.2rem, 1px);
 }
 
 /* -- Editing view -- */
