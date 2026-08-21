@@ -226,7 +226,7 @@ body {
 	--checkbox-margin-inline-start: 0;
   	--checkbox-border-color-hover: var(--text-faint);
 	--checkbox-radius: var(--radius-s);
-	--checkbox-size: round(to-zero,calc(1.1 * var(--font-text-size)), 1px);
+	--checkbox-size: round(to-zero,calc(1.15 * var(--font-text-size)), 1px);
 	--checklist-done-color: var(--text-faint);
 	--checklist-done-decoration: none;
 	/* -- Theme variables -- */
@@ -430,7 +430,7 @@ body {
 	   INDENT SIZE
 	-------------------------------------------------------- */
 	/* -- Obsidian variables -- */
-	--indent-unit: round(to-zero, 0.5rem, 1px);
+	--indent-unit: round(to-zero, 0.55rem, 1px);
 
 	/* -- Unused variables -- //
 	--indent-size: 4;
@@ -1133,7 +1133,9 @@ hr {
 	--list-indent-base: round(to-zero, 2rem, 1px);
 }
 .markdown-rendered ul.contains-task-list > li > :is(ul, ol):not(ul.contains-task-list) > li {
-	--list-indent-base: round(to-zero, 3.2rem, 1px);
+	--optical-offset: 0.2rem;
+	--task-list-spacing: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
+	--list-indent-base: calc(var(--task-list-spacing) + var(--optical-offset));
 	--list-spacing: round(to-zero, 0.25rem, 1px);
 }
 .markdown-rendered :is(ol,ul) > li {
@@ -1243,37 +1245,34 @@ input[type=checkbox]:hover, input[type=checkbox]:active {
 /* -- Reading view -- */
 .markdown-rendered :not(ul, ol) ul.contains-task-list > li {
 	--collapse-indicator-indent: round(to-zero, -1rem, 1px);
-	--list-indent-base: 0px;
+	--list-indent-base: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
+	--task-elements-spacing: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
 	margin-inline-start: var(--list-indent-base);
-	padding-inline-start: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
 	position: relative;
 }
 .markdown-rendered .task-list-item {
 	min-height: calc(var(--line-height-normal) + var(--list-padding-top));
 }
-.markdown-rendered .task-list-item :is(ol,ul) {
-	--parent-padding-inline-start: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
-	position: relative;
-	left: calc(-1 * var(--parent-padding-inline-start));
-}
 .markdown-rendered ul.contains-task-list > .task-list-item > .list-collapse-indicator {
 	padding-inline-end: 0;
 	position: absolute;
-	left: 0;
+	left: calc(-1 * var(--task-elements-spacing));
 }
 .markdown-rendered .task-list-item .task-list-item-checkbox {
 	position: absolute;
-	left: 0;
+	left: calc(-1 * var(--task-elements-spacing));
 	top: var(--list-padding-top);
 }
 .markdown-rendered :not(li) > .contains-task-list > .task-list-item:first-child > .task-list-item-checkbox {
 	top: 0;
 }
 .markdown-rendered ul.contains-task-list > li > ul.contains-task-list > li {
-	--list-indent-base: round(to-zero, 2rem, 1px);
+	--list-indent-base: 2rem;
 }
 .markdown-rendered :is(ol, ul):not(.contains-task-list) > li > ul.contains-task-list > li {
-	--list-indent-base: round(to-zero, 0.8rem, 1px);
+	--optical-offset: 1rem;
+	--task-list-spacing: calc(var(--checkbox-size) + var(--checkbox-end-spacing));
+	--list-indent-base: calc(var(--task-list-spacing) + var(--optical-offset));
 }
 ul > li.task-list-item > p > .task-list-item-checkbox, 
 ul > li.task-list-item > .task-list-item-checkbox {
@@ -1301,14 +1300,16 @@ ul > li.task-list-item > .task-list-item-checkbox {
 -------------------------------------------------------- */
 /* -- Reading view -- */
 .markdown-rendered.show-indentation-guide ul > li > :is(ul,ol)::before {
-	--indentation-guide-reading-indent: round(to-zero, -0.9rem, 1px);
+	--indentation-guide-reading-indent: round(to-zero, -0.85rem, 1px);
 }
 .markdown-rendered.show-indentation-guide ol > li > :is(ul,ol)::before {
 	--indentation-guide-reading-indent: round(to-zero, -0.75rem, 1px);
 	top: round(to-zero, 0.1rem, 1px);
 }
 .markdown-rendered.show-indentation-guide ul.contains-task-list > li > :is(ul,ol)::before {
-	--indentation-guide-reading-indent: round(to-zero, 0.5rem, 1px);
+	/* Halved checkbox size rounded up to get the exact halfway point of odd sizes */
+	--checkbox-size-halved: round(up, var(--checkbox-size) / 2, 1px);
+	--indentation-guide-reading-indent: calc(-1 * (var(--checkbox-size-halved) + var(--checkbox-end-spacing)));
 	top: round(to-zero, 0.2rem, 1px);
 }
 
